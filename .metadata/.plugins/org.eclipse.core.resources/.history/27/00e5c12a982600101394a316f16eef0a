@@ -1,0 +1,44 @@
+package com.project.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.project.model.Challenge;
+
+@Service
+public class ChallengeServiceImpl implements ChallengeService {
+	
+	private List<Challenge> challengeList = new ArrayList<>();
+	@Override
+	public List<Challenge> getAllChallenges() {
+		
+		return null;
+	}
+
+	@Override
+	public Challenge getChallenge(String month) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String addChallenges(Challenge challenge) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String updateChallenge(Long id, Challenge challenge) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteChallenge(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

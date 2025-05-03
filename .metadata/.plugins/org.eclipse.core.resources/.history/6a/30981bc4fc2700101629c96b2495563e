@@ -1,0 +1,26 @@
+package com.backend.job.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.backend.job.model.Job;
+
+@Service
+public class JobServiceImpl implements JobService {
+	private List<Job> jobList = new ArrayList<>();
+	
+	@Override
+	public List<Job> getAllJobs() {
+		// TODO Auto-generated method stub
+		return jobList;
+	}
+
+	@Override
+	public String addJob(Job job) {
+		jobList.add(job);
+		return "Job added successfully";
+	}
+
+}

@@ -1,0 +1,99 @@
+package com.backend.job.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.backend.job.model.Job;
+import com.backend.job.repository.JobRepository;
+
+@Service
+public class JobServiceImpl implements JobService {
+	
+	@Autowired
+	private JobRepository jobRepository;
+	private Long nextId = 1L;
+	private List<Job> jobList = new ArrayList<>();
+	
+	@Override
+	public List<Job> getAllJobs() {
+		return jobRepository.findAll();
+	}
+
+	@Override
+	public String addJob(Job job) {
+		job.setId(nextId++);
+        jobRepository.save(job);
+		//jobList.add(job);
+		return "Job added successfully";
+	}
+
+//	@Override
+//	public Job getJob(String cityName) {
+//		for(var i: jobList) {
+//			if(i.getLocation().equalsIgnoreCase(cityName))
+//				return i;
+//		}
+//		return null;
+//	}
+	
+	@Override
+	public Job getJob(String cityName) {
+		
+		Optional<Job> jobList = jobRepository.findByCityName(cityName);
+		return jobList.orElse(null);
+	}
+
+	@Override
+	public Boolean updateJob(Long id, Job job) {
+		for(var i: jobList) {
+			if(i.getId()==id) {
+				i.setTitle(job.getTitle());
+				i.setDescription(job.getDescription());
+				i.setMinSalary(job.getMinSalary());
+				i.setMaxSalary(job.getMaxSalary());
+				i.setLocation(job.getLocation());
+				
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	
+	
+	
+	
+	
+//	@Override
+//	public Boolean updateJob(Long id, Job job) {
+//		Optional<Job> jobData = jobRepository.findById(id);
+//		if(jobData.isPresent()) {
+//			Job jobEntity = jobData.get();
+//			jobEntity.setTitle(job.getTitle());
+//			jobEntity.setDescription(job.getDescription());
+//			jobEntity.setMinSalary(job.getMinSalary());
+//			jobEntity.setMaxSalary(job.getMaxSalary());
+//			jobEntity.setLocation(job.getLocation());
+//			
+//			jobRepository.save(jobEntity);
+//			return true;
+//		}return false;		
+//	}
+
+	@Override
+	public Boolean deleteJob(Long id) {
+		for(var i: jobList) {
+			if(i.getId()==id) {
+				jobList.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
+
+}

@@ -1,0 +1,60 @@
+package com.project.controler;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.project.model.Challenge;
+
+@RestController
+public class ChallengeControler {
+	private List<Challenge> challengeList = new ArrayList<>();
+	
+	@GetMapping("/challenges")
+	public List<Challenge> getAllChallenge(){
+		return challengeList;
+	}
+	
+	@GetMapping("/challeges/{id}")
+	public Challenge getChallenge(@PathVariable Long id) {
+		for(var i : challengeList) {
+			if(i.getId()== id) {
+				return i;
+			}
+		} return null;
+	}
+	
+	@PostMapping("/challenges")
+	public String addChallenge(@RequestBody Challenge challenge) {
+		challengeList.add(challenge);
+		return "Thankyou Challenge is added.....";
+	}
+	
+	@PutMapping("/challenges/{id}")
+	public String updateChallenge(@PathVariable Long id,@RequestBody Challenge challenge) {
+		for(var i : challengeList) {
+			if(i.getId() == id) {
+				i.setDiscription(challenge.getDiscription());
+				i.setMonth(challenge.getMonth());
+				return "Updated Successfully";
+			}
+		} return "Sorry ID not found!!!!!";
+	}
+	
+	@DeleteMapping("/challenges/{id}")
+	public String deleteChallenge(@PathVariable Long id) {
+		for(var i : challengeList) {
+			if(i.getId() == id) {
+				challengeList.remove(i);
+				return "Deleted Successfully";
+			}
+		} return "Id not found";
+	}
+}

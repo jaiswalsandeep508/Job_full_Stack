@@ -1,0 +1,14 @@
+package com.backend.job.service;
+
+import java.util.List;
+
+import com.backend.job.model.Job;
+
+public interface JobService {
+	List<Job> getAllJobs();
+	String addJob(Job job);
+	Job getJob(String cityName);
+	Boolean updateJob(Long id,Job job);
+	Boolean deleteJob(Long id);
+
+}

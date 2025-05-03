@@ -1,0 +1,26 @@
+package main;
+
+import java.util.Arrays;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+//@SpringBootApplication
+//public class ChallengeBackendApplication {
+//
+//	public static void main(String[] args) {
+//		SpringApplication.run(ChallengeBackendApplication.class, args);
+//	}
+//
+//}
+
+
+@SpringBootApplication
+public class ChallengeBackendApplication {
+    public static void main(String[] args) {
+        ConfigurableApplicationContext context = SpringApplication.run(ChallengeBackendApplication.class, args);
+        System.out.println(Arrays.toString(context.getBeanDefinitionNames()));
+    }
+}
+

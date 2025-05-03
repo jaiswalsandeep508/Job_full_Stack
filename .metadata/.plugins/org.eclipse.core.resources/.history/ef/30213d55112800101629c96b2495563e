@@ -1,0 +1,4 @@
+spring.application.name=Job_Backendspring
+spring.h2.console.enabled=true
+spring.datasourece.url=jdbc:h2:mem:test
+

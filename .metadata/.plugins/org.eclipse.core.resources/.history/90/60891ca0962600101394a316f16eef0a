@@ -1,0 +1,16 @@
+package com.project.service;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.project.model.Challenge;
+
+public interface ChallengeService {
+	List<Challenge> getAllChallenges();
+	Challenge getChallenge(String month);
+	String addChallenges(Challenge challenge);
+	String updateChallenge(Long id,Challenge challenge);
+	String deleteChallenge(Long id);
+	
+}

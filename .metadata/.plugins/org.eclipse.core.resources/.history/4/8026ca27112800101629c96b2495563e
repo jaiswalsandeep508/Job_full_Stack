@@ -1,0 +1,2 @@
+spring.application.name=Job_Backendspring
+spring.h2.console.enabled=true

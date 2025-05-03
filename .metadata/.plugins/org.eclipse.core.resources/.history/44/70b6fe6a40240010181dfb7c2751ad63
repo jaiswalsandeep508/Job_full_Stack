@@ -1,0 +1,25 @@
+package com.project.controler;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.project.model.Challenge;
+
+public class ChallengeControler {
+	private List<Challenge> challengeList = new ArrayList<>();
+	
+	@GetMapping("/challenges")
+	public List<Challenge> getAllChallenge(){
+		return challengeList;
+	}
+	
+	public Challenge getChallenge(Long id) {
+		for(var i : challengeList) {
+			if(i.getId()== id) {
+				return i;
+			}
+		} return null;
+	}
+}
