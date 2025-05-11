@@ -29,6 +29,16 @@ public class JobController {
 		return jobService.getAllJobs();
 	}
 	
+//	@GetMapping("/{id}")
+//	private ResponseEntity<Object> getJob(@PathVariable Long id) {
+//		Job job = jobService.getJob(id); 
+//		if (job != null) {
+//	        return ResponseEntity.ok(job);
+//	    } else {
+//	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Job not Found..😢");
+//	    }
+//	}
+	
 	@GetMapping("/{id}")
 	private ResponseEntity<Object> getJob(@PathVariable Long id) {
 		Job job = jobService.getJob(id); 
